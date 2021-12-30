@@ -1,0 +1,10 @@
+flask-api-server/processed_director_sim.pickle
+flask-api-server/__pycache__/app.cpython-38.pyc
+flask-api-server/api/__pycache__/__init__.cpython-38.pyc
+flask-api-server/api/__pycache__/team_one.cpython-38.pyc
+flask-api-server/api/__pycache__/team_three.cpython-38.pyc
+flask-api-server/api/__pycache__/team_two.cpython-38.pyc
+flask-api-server/modules/__pycache__/contents_based_algorithm.cpython-38.pyc
+flask-api-server/modules/__pycache__/user_based_algorithm.cpython-38.pyc
+modules/userpoint2.csv
+flask-api-server/userpoint2.csv

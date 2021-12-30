@@ -1,0 +1,2 @@
+참고 코드
+https://github.com/edugieun/pjt_01/blob/master/02.py#L74

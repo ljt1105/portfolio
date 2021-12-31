@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- package-name : com.demoweb.mapper, class-name : BoardMapper -->
+<mapper namespace="com.traveler.mapper.FlightsMapper">
+
+
+	<!-- <select id="selectFlightsByFlightsNo" parameterType="String" resultType="FlightSchedules">
+		SELECT FLIGHT, DATE_FROM, DATE_TO, AIRLINE, DESTINATION
+		FROM flight_schedules
+		WHERE airline = #{ airline }
+	</select> -->
+
+	<select id="selectAirline"  resultType="String">
+		select distinct airline 
+		from flight_schedules
+	</select>
+	
+<!-- 	<select id="selectFlight"  resultType="String">
+		select distinct flight 
+		from flight_schedules
+	</select>
+ -->
+ 	<select id="selectFlight" parameterType="String" resultType="FlightSchedules">
+		select distinct flight 
+		from flight_schedules
+		WHERE airline = #{ airline }
+	</select> 
+	<select id="selectDestination"  resultType="String">
+		select distinct trim(destination) 
+		from flight_schedules
+	</select>
+	<select id="selectDateFrom"  resultType="String">
+		select distinct month(date_from) 
+		from flight_schedules
+		
+	</select>
+	<select id="selectDay"  resultType="String">
+		select distinct day 
+		from flight_schedules
+		
+	</select>
+	
+	<select id="selectAirlineByDestination" parameterType="String" resultType="String">
+		select distinct airline 
+		from flight_schedules 
+		where destination = #{ destination }
+	</select>
+	
+	<select id="selectDaysByDestinationAndAirline" parameterType="hashmap" resultType="String">
+		select distinct day 
+		from flight_schedules 
+		where destination = #{ destination } and airline = #{ airline }
+	</select>
+	<select id="selectDateFromByDestinationAndAirline" parameterType="hashmap" resultType="String">
+		select distinct month(date_from) 
+		from flight_schedules 
+		where destination = #{ destination } and airline = #{ airline }
+	</select>
+	<select id="selectFlightScheduleStat" parameterType="hashmap" resultType="FlightScheduleStatVO">
+		select day, count(*) as dailyCount
+		from flight_schedules
+		where destination = #{ destination } and airline = #{ airline } and month(date_from) = #{ date_from }
+		group by day;
+	</select>
+	<select id="searchedList" parameterType="Criteria" resultType="FlightSchedules">
+		select *		
+		from flight_schedules
+		where
+			destination = #{ destination }
+			and airline = #{ airline }	
+			and day = #{ day }	
+			
+		    	
+	</select>
+	
+
+</mapper>

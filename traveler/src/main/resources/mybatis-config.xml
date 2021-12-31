@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 
+		~Mapper.xml 에서 사용할 타입이름을 미리 등록하는 설정 
+		MemberVO가 나오면 com.traveler.vo.MemberVO로 처리하라는 의미
+	-->
+	<typeAliases>
+		<typeAlias type="com.traveler.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.traveler.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.traveler.vo.FlightSchedules" alias="FlightSchedules" />
+		<typeAlias type="com.traveler.vo.FlightScheduleStatVO" alias="FlightScheduleStatVO" />
+		<typeAlias type="com.traveler.vo.Criteria" alias="Criteria" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/traveler/mapper/ManagementMapper.xml" />
+		<mapper resource="com/traveler/mapper/BoardMapper.xml" />
+		<mapper resource="com/traveler/mapper/FlightsMapper.xml"/>
+	</mappers>
+
+</configuration>

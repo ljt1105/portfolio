@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="authService" class="com.traveler.service.AuthServiceImpl">
+		<property name="memberDao" ref="memberDao" /> <!-- 앞에 MDAO는 setMemberDao랑 연결 뒤에 MDAO는 아랫줄에 <bean id="memberDao"...>랑 연결 -->
+		<!-- <property name="managementDao" ref="managementDao" /> -->
+		<property name="managementMapper" ref="managementMapper" />
+	</bean>
+	
+	<bean id="memberDao" class="com.traveler.dao.MemberDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
+	<mybatis-spring:scan base-package="com.traveler.mapper" />
+
+</beans>

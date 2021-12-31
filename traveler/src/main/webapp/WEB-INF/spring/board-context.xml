@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="boardService" class="com.traveler.service.BoardServiceImpl">
+		<property name="boardDao" ref="myBatisBoardDao" />
+		<property name="boardMapper" ref="boardMapper" />
+	</bean>
+	
+	<bean id="myBatisBoardDao" class="com.traveler.dao.MyBatisBoardDaoImpl">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+	</bean>
+	
+	<mybatis-spring:scan base-package="com.traveler.mapper" />
+
+</beans>

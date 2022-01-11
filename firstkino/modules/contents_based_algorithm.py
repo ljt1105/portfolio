@@ -1,3 +1,5 @@
+
+# 데이터베이스에 저장된 데이터를 불러오는 함수
 def load_data():
     import pymysql
     conn = pymysql.connect(host='localhost', 
@@ -28,6 +30,7 @@ def load_data():
     rows = cursor.fetchall()
     return rows
 
+# 불러온 데이터를 전처리
 def preprocessing_data(rows):
     import pandas as pd
     import numpy as np
